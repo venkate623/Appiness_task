@@ -1,0 +1,32 @@
+<div class="container">
+  <form>
+    <div class="search">
+      <h6>Enter User Name</h6>
+    <input type="text" #inputValue>
+    <button (click)="search(inputValue.value)">Search</button>
+    </div>
+    
+    <div *ngIf="!showRepos">
+     <div class ="user-name" *ngFor="let data of datas">
+       <div class="user-detail">
+         <p  (click)="showRepo(data.login)">
+           <span>User Name : </span><span  >{{data.login}}</span>
+         </p>
+         <p>Id : {{data.id}}</p>
+         <p>Node_id : {{data.node_id}}</p>
+         <p>User Type: {{data.type}}</p>
+         </div>
+     </div>
+    </div>
+    
+    <div *ngIf="showRepos" >
+      <h2>List of all repos</h2>
+      <div class="repos">
+      <div *ngFor="let data of allRepo">
+        {{data.name}}
+      </div>
+    </div>
+    </div>
+  </form>
+</div>
+    
